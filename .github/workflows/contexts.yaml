@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: "*/5 * * * *"
 
+env:
+  REPOSITORY_NAME: echo ${{ github.repository }} | awk -F'/' '{print $2}'
+
 jobs:
   dump_contexts_to_log:
     name: ${{ github.event_name }}
@@ -14,6 +17,8 @@ jobs:
     steps:
       - name: echo repository name
         run: echo ${{ github.repository }} | awk -F'/' '{print $2}'
+      - name: echo env
+        run: echo ${{ env.REPOSITORY_NAME }}
       - name: Dump github context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
