@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "* 5 * * *"
 
 env:
   REPOSITORY_NAME: $(echo ${{ github.repository }} | awk -F'/' '{print $2}')
