@@ -15,8 +15,10 @@ jobs:
     name: ${{ github.event_name }}
     runs-on: ubuntu-latest
     steps:
-      - name: echo repository name
+      - name: echo repository name 1
         run: echo ${{ github.repository }} | awk -F'/' '{print $2}'
+      - name: echo repository name 2
+        run: echo ${{ github.event.repository.name }}
       - name: echo env
         run: echo ${{ env.REPOSITORY_NAME }}
       - name: Dump github context
