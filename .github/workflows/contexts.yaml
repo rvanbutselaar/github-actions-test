@@ -12,6 +12,8 @@ jobs:
     name: ${{ github.event_name }}
     runs-on: ubuntu-latest
     steps:
+      - name: echo repository name
+        run: echo ${{ github.repository }} | awk -F'/' '{print $2}'
       - name: Dump github context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
